@@ -5,12 +5,25 @@ import java.util.ArrayList;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+import org.springframework.web.client.RestTemplate;
+import org.springframework.web.reactive.function.client.WebClient;
 
 import com.movies.moviecatalogservice.data.MovieCatalogData;
 import com.movies.moviecatalogservice.model.Movie;
 
 @SpringBootApplication
 public class MovieCatalogServiceApplication implements CommandLineRunner {
+	
+	@Bean
+	public RestTemplate getRestTemplate() {
+		return new RestTemplate();
+	}
+	
+	@Bean
+	public WebClient.Builder getWebClientBuilder() {
+		return WebClient.builder();
+	}
 
 	public static void main(String[] args) {
 		SpringApplication.run(MovieCatalogServiceApplication.class, args);

@@ -25,7 +25,7 @@ public class MovieCatalogController {
 	
 	@GetMapping
 	public List<Movie> getAllMovies() {
-		logger.info("MovieCatalogController.getAllMovies()");
+		logger.info("MovieCatalogController.getAllMovies()");		
 		return this.movieCatalogService.getAllMovies();
 	}
 	
