@@ -19,10 +19,10 @@ public class MovieCatalogServiceApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		MovieCatalogData.MOVIE_CATALOG = new ArrayList<>();
-		MovieCatalogData.MOVIE_CATALOG.add(new Movie("MOVIE001", "Terminator", "Robot war movie."));
-		MovieCatalogData.MOVIE_CATALOG.add(new Movie("MOVIE002", "Robocop", "Robot war movie."));
-		MovieCatalogData.MOVIE_CATALOG.add(new Movie("MOVIE003", "I, Robot", "Robot war movie."));
-		MovieCatalogData.MOVIE_CATALOG.add(new Movie("MOVIE004", "Transformers", "Robot war movie."));
+		MovieCatalogData.MOVIE_CATALOG.add(new Movie("MOVIE001", "Terminator"));
+		MovieCatalogData.MOVIE_CATALOG.add(new Movie("MOVIE002", "Robocop"));
+		MovieCatalogData.MOVIE_CATALOG.add(new Movie("MOVIE003", "I, Robot"));
+		MovieCatalogData.MOVIE_CATALOG.add(new Movie("MOVIE004", "Transformers"));
 	}
 
 }
