@@ -1,4 +1,4 @@
-package com.movies.movieinfoservice.model;
+package com.movies.moviecatalogservice.model;
 
 public class MovieInfo {
 	
@@ -10,15 +10,6 @@ public class MovieInfo {
 	
 	public MovieInfo() {
 		super();
-	}
-
-	public MovieInfo(String movieId, String leadActor, String leadActress, String releaseYear, String moviePlot) {
-		super();
-		this.movieId = movieId;
-		this.leadActor = leadActor;
-		this.leadActress = leadActress;
-		this.releaseYear = releaseYear;
-		this.moviePlot = moviePlot;
 	}
 	
 	public String getMovieId() {

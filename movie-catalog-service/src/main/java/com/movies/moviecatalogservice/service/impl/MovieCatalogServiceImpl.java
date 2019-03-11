@@ -5,9 +5,13 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 import com.movies.moviecatalogservice.data.MovieCatalogData;
 import com.movies.moviecatalogservice.model.Movie;
+import com.movies.moviecatalogservice.model.MovieInfo;
+import com.movies.moviecatalogservice.model.MovieObject;
+import com.movies.moviecatalogservice.model.MovieRating;
 import com.movies.moviecatalogservice.service.MovieCatalogService;
 
 @Service
@@ -22,20 +26,28 @@ public class MovieCatalogServiceImpl implements MovieCatalogService {
 	}
 
 	@Override
-	public Movie getMovieById(String id) {
+	public MovieObject getMovieById(String id) {
 		logger.info("MovieCatalogService.getMovieById()");
-		Movie movieData = null;
+		MovieObject movieObject = new MovieObject();
+		
 		boolean found = false;
 		for (Movie movie : MovieCatalogData.MOVIE_CATALOG) {
 			if (movie.getMovieId().equals(id)) {
-				movieData = movie;
+				RestTemplate restTemplate = new RestTemplate();
+				MovieInfo movieInfo = restTemplate.getForObject("http://localhost:8092/info/"+id, MovieInfo.class);
+				MovieRating movieRating = restTemplate.getForObject("http://localhost:8093/rating/"+id, MovieRating.class);
+				
+				movieObject.setMovieId(movie.getMovieId());
+				movieObject.setMovieName(movie.getMovieName());
+				movieObject.setMovieInfo(movieInfo);
+				movieObject.setMovieRating(movieRating);
 				found = true;
 				break;
 			}
 		}
 		
 		if (found) {
-			return movieData;
+			return movieObject;
 		}
 		return null;
 	}

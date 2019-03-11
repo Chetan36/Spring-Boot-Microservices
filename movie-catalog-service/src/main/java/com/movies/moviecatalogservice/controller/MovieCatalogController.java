@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.movies.moviecatalogservice.model.Movie;
+import com.movies.moviecatalogservice.model.MovieObject;
 import com.movies.moviecatalogservice.service.MovieCatalogService;
 
 @RestController
@@ -29,7 +30,7 @@ public class MovieCatalogController {
 	}
 	
 	@GetMapping("/{movieId}")
-	public Movie getMovieById(@PathVariable("movieId") String id) {
+	public MovieObject getMovieById(@PathVariable("movieId") String id) {
 		logger.info("MovieCatalogController.getMovieById()");
 		return this.movieCatalogService.getMovieById(id);
 	}
