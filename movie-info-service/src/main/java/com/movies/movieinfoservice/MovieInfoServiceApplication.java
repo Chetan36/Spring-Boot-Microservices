@@ -5,10 +5,12 @@ import java.util.ArrayList;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
 import com.movies.movieinfoservice.data.MovieInfoData;
 import com.movies.movieinfoservice.model.MovieInfo;
 
+@EnableEurekaClient
 @SpringBootApplication
 public class MovieInfoServiceApplication implements CommandLineRunner {
 

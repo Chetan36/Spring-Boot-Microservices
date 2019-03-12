@@ -5,10 +5,12 @@ import java.util.ArrayList;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
 import com.movies.movieratingservice.data.MovieRatingData;
 import com.movies.movieratingservice.model.MovieRating;
 
+@EnableEurekaClient
 @SpringBootApplication
 public class MovieRatingServiceApplication implements CommandLineRunner {
 
