@@ -7,7 +7,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-import org.springframework.web.reactive.function.client.WebClient;
 
 import com.movies.moviecatalogservice.data.MovieCatalogData;
 import com.movies.moviecatalogservice.model.Movie;
@@ -24,8 +23,8 @@ public class MovieCatalogServiceImpl implements MovieCatalogService {
 	@Autowired
 	private RestTemplate restTemplate;
 	
-	@Autowired
-	private WebClient.Builder webClientBuilder;
+//	@Autowired
+//	private WebClient.Builder webClientBuilder;
 
 	@Override
 	public List<Movie> getAllMovies() {
