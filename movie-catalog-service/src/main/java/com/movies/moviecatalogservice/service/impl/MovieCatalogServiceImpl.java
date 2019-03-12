@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.reactive.function.client.WebClient;
 
 import com.movies.moviecatalogservice.data.MovieCatalogData;
 import com.movies.moviecatalogservice.model.Movie;
@@ -23,8 +24,8 @@ public class MovieCatalogServiceImpl implements MovieCatalogService {
 	@Autowired
 	private RestTemplate restTemplate;
 	
-//	@Autowired
-//	private WebClient.Builder webClientBuilder;
+	@Autowired
+	private WebClient.Builder webClientBuilder;
 
 	@Override
 	public List<Movie> getAllMovies() {
@@ -43,16 +44,16 @@ public class MovieCatalogServiceImpl implements MovieCatalogService {
 				
 				// First way
 				MovieInfo movieInfo = restTemplate.getForObject("http://MOVIEINFOSERVICE/"+id, MovieInfo.class);
-				MovieRating movieRating = restTemplate.getForObject("http://MOVIERATINGSERVICE/"+id, MovieRating.class);
+//				MovieRating movieRating = restTemplate.getForObject("http://MOVIERATINGSERVICE/"+id, MovieRating.class);
 				
 				// Second way
 
-//				MovieRating movieRating = this.webClientBuilder.build()
-//					.get()
-//					.uri("http://MOVIERATINGSERVICE/"+id)
-//					.retrieve()
-//					.bodyToMono(MovieRating.class)
-//					.block();
+				MovieRating movieRating = this.webClientBuilder.build()
+					.get()
+					.uri("http://MOVIERATINGSERVICE/"+id)
+					.retrieve()
+					.bodyToMono(MovieRating.class)
+					.block();
 				
 				movieObject.setMovieId(movie.getMovieId());
 				movieObject.setMovieName(movie.getMovieName());
