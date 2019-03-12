@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
@@ -18,6 +19,7 @@ import com.movies.moviecatalogservice.model.Movie;
 public class MovieCatalogServiceApplication implements CommandLineRunner {
 	
 	@Bean
+	@LoadBalanced
 	public RestTemplate getRestTemplate() {
 		return new RestTemplate();
 	}

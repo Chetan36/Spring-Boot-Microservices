@@ -43,15 +43,17 @@ public class MovieCatalogServiceImpl implements MovieCatalogService {
 			if (movie.getMovieId().equals(id)) {
 				
 				// First way
-				MovieInfo movieInfo = restTemplate.getForObject("http://localhost:8092/info/"+id, MovieInfo.class);
+				MovieInfo movieInfo = restTemplate.getForObject("http://MOVIEINFOSERVICE/"+id, MovieInfo.class);
+				MovieRating movieRating = restTemplate.getForObject("http://MOVIERATINGSERVICE/"+id, MovieRating.class);
 				
 				// Second way
-				MovieRating movieRating = this.webClientBuilder.build()
-					.get()
-					.uri("http://localhost:8093/rating/"+id)
-					.retrieve()
-					.bodyToMono(MovieRating.class)
-					.block();
+
+//				MovieRating movieRating = this.webClientBuilder.build()
+//					.get()
+//					.uri("http://MOVIERATINGSERVICE/"+id)
+//					.retrieve()
+//					.bodyToMono(MovieRating.class)
+//					.block();
 				
 				movieObject.setMovieId(movie.getMovieId());
 				movieObject.setMovieName(movie.getMovieName());
